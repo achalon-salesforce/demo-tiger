@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>vucPOADaFbxHnUgN5vcF8wM+YtaBckde9RD68hp6dRY=_1</activeVersionIdentifier>
+    <developerName>xDO_Generate_Demo_Configuration_Colors</developerName>
+    <masterLabel>xDO | Generate Demo Configuration Colors</masterLabel>
+    <templateVersions>
+        <content>Please create a JSON array of xDO_Demo_Configuration__c in the following format and do not add anything other than this format:
+
+{&quot;xDO_Primary_Color_HEX_Code__c&quot;:&quot;#FFFFFF&quot;,&quot;xDO_Secondary_Color_HEX_Code__c&quot;:&quot;#FFFFFF&quot;,&quot;xDO_Accent_Color_1_HEX_Code__c&quot;:&quot;#FFFFFF&quot;,&quot;xDO_Accent_Color_2_HEX_Code__c&quot;:&quot;#FFFFFF&quot;,&quot;xDO_Accent_Color_3_HEX_Code__c&quot;:&quot;#FFFFFF&quot;,&quot;xDO_Accent_Color_4_HEX_Code__c&quot;:&quot;#FFFFFF&quot;}
+
+INSTRUCTIONS
+* Set the colors based on the colors in the Logo file attached.
+* Given the Company name is: {!$Input:CompanyName}, if you know their colors you can use those too.
+* Do not start the response with ```json
+* Do not include brackets around the object []
+* Make sure colors do not repeat.
+* All values must be HEX codes (e.g., #FFFFFF) — never use names, RGB, or HSL values.
+* If you&apos;re unsure of a color, pick a variation of a known color.
+* Never set the colors to a value that is not a HEX code.
+
+FIELD VALUES
+* The xDO_Primary_Color_HEX_Code__c must be the most prominent (primary) color in the company logo.
+* The xDO_Secondary_Color_HEX_Code__c must be the second most prominent color.
+* xDO_Accent_Color_1_HEX_Code__c should be a lighter complexion of any brand or logo color.
+* xDO_Accent_Color_2_HEX_Code__c should be a darker complexion of any brand or logo color.
+* xDO_Accent_Color_3_HEX_Code__c should be another lighter complexion.
+* xDO_Accent_Color_4_HEX_Code__c should be another darker complexion.
+* If there are not enough brand colors to assign distinct values for all six fields, use neutral shades such as white, light gray, gray, and black as needed.
+* If no logo is provided and no company is known, default all colors to #FFFFFF.
+
+</content>
+        <inputs>
+            <apiName>CompanyName</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Company Name</masterLabel>
+            <referenceName>Input:CompanyName</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Logo</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>Logo</masterLabel>
+            <referenceName>Input:Logo</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>vucPOADaFbxHnUgN5vcF8wM+YtaBckde9RD68hp6dRY=_1</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

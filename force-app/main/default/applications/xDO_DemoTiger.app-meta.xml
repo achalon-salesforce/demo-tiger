@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <content>DemoTiger_Home_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>standard-home</pageOrSobjectType>
+    </actionOverrides>
+    <brand>
+        <headerColor>#F56600</headerColor>
+        <logo>Demo_Tiger_Flyer_NBG</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
+    </brand>
+    <description>Manage your demo org and the DemoTiger tools from this centralized hub.</description>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>DemoTiger</label>
+    <navType>Console</navType>
+    <tabs>standard-home</tabs>
+    <tabs>DemoTiger_Setup</tabs>
+    <tabs>xDO_Demo_Configuration__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>DemoTiger_UtilityBar</utilityBar>
+    <workspaceConfig>
+        <mappings>
+            <tab>DemoTiger_Setup</tab>
+        </mappings>
+        <mappings>
+            <tab>standard-home</tab>
+        </mappings>
+        <mappings>
+            <tab>xDO_Demo_Configuration__c</tab>
+        </mappings>
+    </workspaceConfig>
+</CustomApplication>

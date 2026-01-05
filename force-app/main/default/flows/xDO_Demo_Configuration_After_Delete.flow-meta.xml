@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Add_Asset_File_Names</name>
+        <label>Add Asset File Names</label>
+        <locationX>446</locationX>
+        <locationY>695</locationY>
+        <assignmentItems>
+            <assignToReference>contentAssetNames</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.xDO_Logo__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>contentAssetNames</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.xDO_Brand_Image__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>contentAssetNames</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.xDO_Group_Image__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>contentAssetNames</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.xDO_User_Image__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Get_Asset_Files</targetReference>
+        </connector>
+    </assignments>
+    <customErrors>
+        <name>Active_Error</name>
+        <label>Active Error</label>
+        <locationX>50</locationX>
+        <locationY>695</locationY>
+        <customErrorMessages>
+            <errorMessage>Please don&apos;t delete an active Demo Configuration. If you wish to delete this record then deactivate it first.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Default_Error</name>
+        <label>Default Error</label>
+        <locationX>116</locationX>
+        <locationY>395</locationY>
+        <connector>
+            <targetReference>If_Active</targetReference>
+        </connector>
+        <customErrorMessages>
+            <errorMessage>You may not delete the default Demo Configuration.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>If_Active</name>
+        <label>If Active</label>
+        <locationX>248</locationX>
+        <locationY>587</locationY>
+        <defaultConnector>
+            <targetReference>Add_Asset_File_Names</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Active</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.xDO_Active__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Active_Error</targetReference>
+            </connector>
+            <label>Active</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Asset_Files</name>
+        <label>If Asset Files</label>
+        <locationX>446</locationX>
+        <locationY>911</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Asset_Files</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Asset_Files</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_Asset_Files</targetReference>
+            </connector>
+            <label>Asset Files</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>If_Default</name>
+        <label>If Default</label>
+        <locationX>248</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>If_Active</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Default</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.xDO_Default_Demo_Configuration__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Default_Error</targetReference>
+            </connector>
+            <label>Default</label>
+        </rules>
+    </decisions>
+    <description>DemoTiger flow that runs validation and deletes related records after a Demo Configuration is deleted.</description>
+    <environments>Default</environments>
+    <interviewLabel>xDO | Demo Configuration | After Delete {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>xDO | Demo Configuration | After Delete</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordDeletes>
+        <name>Delete_Asset_Files</name>
+        <label>Delete Asset Files</label>
+        <locationX>314</locationX>
+        <locationY>1019</locationY>
+        <inputReference>Get_Asset_Files</inputReference>
+    </recordDeletes>
+    <recordLookups>
+        <name>Get_Asset_Files</name>
+        <label>Get Asset Files</label>
+        <locationX>446</locationX>
+        <locationY>803</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>If_Asset_Files</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>contentAssetNames</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>ContentAsset</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>122</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>If_Default</targetReference>
+        </connector>
+        <object>xDO_Demo_Configuration__c</object>
+        <recordTriggerType>Delete</recordTriggerType>
+        <triggerType>RecordBeforeDelete</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>contentAssetNames</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

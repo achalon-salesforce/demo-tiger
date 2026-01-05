@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Color Picker</masterLabel>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="label" type="String" label="Label" description="The label for the color picker" required="true"/>
+            <property name="required" type="Boolean" label="Required" description="Whether the color picker is required" default="false"/>
+            <property name="defaultValue" type="String" label="Default Value" description="The default color value (hex code)"/>
+            <property name="readOnly" type="Boolean" label="Read Only" description="Whether the color picker is read-only" default="false"/>
+            <property name="value" type="String" label="Selected Color" description="The selected color value" role="outputOnly"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,4 @@
+<design:component label="Override Site Demo">
+    <design:attribute name="isEnabled" label="Enable Component" default="true" />
+    <design:attribute name="textToReplace" label="Text to Replace"/>
+</design:component>

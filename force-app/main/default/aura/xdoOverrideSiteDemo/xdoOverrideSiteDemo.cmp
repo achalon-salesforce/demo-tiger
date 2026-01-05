@@ -1,0 +1,28 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="XDO_OverrideSiteDemoController" description="University Site Configuration Override">
+    <aura:attribute name="companyName" type="String" default="" />
+    <aura:attribute name="config" type="xDO_Demo_Configuration__c" />
+    <aura:attribute name="isEnabled" type="Boolean" default="true" />
+    <aura:attribute name="textToReplace" type="String" />
+
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <aura:if isTrue="{!v.isEnabled}">
+        <div id="site-data" 
+            data-text-to-replace="{!v.textToReplace}"
+            data-company-name="{!v.companyName}"
+            data-config-name="{!v.config.Name}"
+            data-accent-color-1="{!v.config.xDO_Accent_Color_1_HEX_Code__c}"
+            data-accent-color-2="{!v.config.xDO_Accent_Color_2_HEX_Code__c}"
+            data-accent-color-3="{!v.config.xDO_Accent_Color_3_HEX_Code__c}"
+            data-accent-color-4="{!v.config.xDO_Accent_Color_4_HEX_Code__c}"
+            data-primary-color="{!v.config.xDO_Primary_Color_HEX_Code__c}"
+            data-secondary-color="{!v.config.xDO_Secondary_Color_HEX_Code__c}"
+            data-brand-image="{!v.config.xDO_Brand_Image_URL__c}"
+            data-group-image="{!v.config.xDO_Group_Image_URL__c}"
+            data-logo="{!v.config.xDO_Logo_URL__c}"
+            data-user-image="{!v.config.xDO_User_Image_URL__c}"
+            style="display: none;">
+        </div>
+    </aura:if>
+</aura:component>

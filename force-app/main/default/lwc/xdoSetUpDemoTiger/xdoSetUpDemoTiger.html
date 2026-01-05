@@ -1,0 +1,170 @@
+<template>
+    <div class="slds-p-around_medium">
+        <!-- Progress Indicator -->
+        <div class="slds-m-bottom_medium">
+            <lightning-progress-indicator
+                current-step={currentStep}
+                type="base"
+                variant="base">
+                <lightning-progress-step label="Activate Theme" value="step1"></lightning-progress-step>
+                <lightning-progress-step label="Apply Branding" value="step2"></lightning-progress-step>
+                <lightning-progress-step label="Create Configuration" value="step3"></lightning-progress-step>
+                <lightning-progress-step label="Grant Access" value="step4"></lightning-progress-step>
+            </lightning-progress-indicator>
+        </div>
+
+        <!-- Main Content Card -->
+        <div class="slds-card">
+            <div class="slds-card__body slds-card__body_inner">
+                <!-- Steps Accordion -->
+                <lightning-accordion allow-multiple-sections-open expanded-sections={expandedSections}>
+                    <!-- Step 1 -->
+                    <lightning-accordion-section name="step1" label="Activate the DemoTiger Theme">
+                        <div class="slds-grid slds-grid_align-spread">
+                            <div>
+                                <p class="slds-m-top_small">Go to Setup → Themes and Branding and activate the <strong>DemoTiger</strong> Theme.</p>
+                                <div class="slds-m-top_medium">
+                                    <lightning-button 
+                                        label="Launch Themes and Branding" 
+                                        onclick={navigateToThemes}
+                                        icon-name="utility:new_window"
+                                        icon-position="right"
+                                        variant="brand"
+                                        class="slds-m-right_small">
+                                    </lightning-button>
+                                </div>
+                            </div>
+                            <lightning-button 
+                                label="Mark Complete" 
+                                onclick={handleComplete}
+                                data-step="step1"
+                                class="slds-m-left_medium"
+                                icon-position="right">
+                            </lightning-button>
+                        </div>
+                    </lightning-accordion-section>
+
+                    <!-- Step 2 -->
+                    <lightning-accordion-section name="step2" label="Apply Branding to Experience Cloud Sites">
+                        <div class="slds-grid slds-grid_align-spread">
+                            <div>
+                                <p class="slds-m-top_small">For each <strong>Experience Cloud</strong> site page you'd like to rebrand:</p>
+                                <div class="slds-m-top_medium">
+                                    <lightning-button 
+                                        label="Launch Digital Experiences" 
+                                        onclick={navigateToDigitalExperiences}
+                                        icon-name="utility:new_window"
+                                        icon-position="right"
+                                        variant="brand"
+                                        class="slds-m-right_small">
+                                    </lightning-button>
+                                </div>
+                                <ul class="slds-list_dotted slds-m-left_medium slds-m-top_small">
+                                    <li class="slds-m-bottom_small">Go to Setup → Digital Experiences → All Sites</li>
+                                    <li class="slds-m-bottom_small">Open the site in <strong>Experience Builder</strong> by clicking Builder</li>
+                                    <li class="slds-m-bottom_small">Drag the <strong>Override Site Demo Aura Component</strong> to the page layout (anywhere is fine)</li>
+                                    <li class="slds-m-bottom_small">Set Enable Component to True</li>
+                                    <li class="slds-m-bottom_small">Optionally, set Text to Replace. This will replace that text with your <strong>Demo Configuration Name</strong> throughout this <strong>Experience Cloud</strong> page.</li>
+                                    <li class="slds-m-bottom_small">Open Settings → Advanced → Edit Head Markup</li>
+                                    <li class="slds-m-bottom_small">Paste this code in the top of the markup:</li>
+                                </ul>
+                                <div class="slds-p-around_medium slds-m-left_medium slds-m-bottom_small slds-theme_shade">
+                                    <code>&lt;script src="/sfsites/c/resource/xDO_DemoTiger" type="text/javascript"&gt;&lt;/script&gt;</code>
+                                </div>
+                                <p class="slds-m-left_medium">Publish your site.</p>
+                            </div>
+                            <lightning-button 
+                                label="Mark Complete" 
+                                onclick={handleComplete}
+                                data-step="step2"
+                                class="slds-m-left_medium"
+                                icon-position="right">
+                            </lightning-button>
+                        </div>
+                    </lightning-accordion-section>
+
+                    <!-- Step 3 -->
+                    <lightning-accordion-section name="step3" label="Create a Default Demo Configuration">
+                        <div class="slds-grid slds-grid_align-spread">
+                            <div>
+                                <p class="slds-m-top_small">Navigate to the DemoTiger app homepage and follow these steps:</p>
+                                <div class="slds-m-top_medium">
+                                    <lightning-button 
+                                        label="Launch DemoTiger Kickstarter" 
+                                        onclick={navigateToDemoTigerKickstarter}
+                                        icon-name="utility:new_window"
+                                        icon-position="right"
+                                        variant="brand"
+                                        class="slds-m-right_small">
+                                    </lightning-button>
+                                </div>
+                                <ul class="slds-list_dotted slds-m-left_medium slds-m-top_small">
+                                    <li class="slds-m-bottom_small">Follow the Demo Kickstarter screen flow to create your default demo configuration</li>
+                                    <li class="slds-m-bottom_small">Keep in mind:
+                                        <ul class="slds-list_dotted slds-m-left_medium slds-m-top_small">
+                                            <li class="slds-m-bottom_small">You can only create one default configuration per org</li>
+                                            <li class="slds-m-bottom_small">Take time to consider what you want the default to be — it's the fallback if other configurations are inactive</li>
+                                            <li class="slds-m-bottom_small">You can create as many custom configurations as needed after setting the default</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <lightning-button 
+                                label="Mark Complete" 
+                                onclick={handleComplete}
+                                data-step="step3"
+                                class="slds-m-left_medium"
+                                icon-position="right">
+                            </lightning-button>
+                        </div>
+                    </lightning-accordion-section>
+
+                    <!-- Step 4 -->
+                    <lightning-accordion-section name="step4" label="Grant Guest User Access to Apex Class">
+                        <div class="slds-grid slds-grid_align-spread">
+                            <div>
+                                <p class="slds-m-top_small">To allow DemoTiger to function correctly on your Experience Cloud site:</p>
+                                <div class="slds-m-top_medium">
+                                    <lightning-button 
+                                        label="Launch Public Access Settings" 
+                                        onclick={navigateToPublicAccessSettings}
+                                        icon-name="utility:new_window"
+                                        icon-position="right"
+                                        variant="brand"
+                                        class="slds-m-right_small">
+                                    </lightning-button>
+                                </div>
+                                <ul class="slds-list_dotted slds-m-left_medium slds-m-top_small">
+                                    <li class="slds-m-bottom_small">Go to Setup → Sites → [Your Site] → Public Access Settings</li>
+                                    <li class="slds-m-bottom_small">Under Enabled Apex Class Access, add the following class:</li>
+                                </ul>
+                                <div class="slds-p-around_medium slds-m-left_medium slds-m-bottom_small slds-theme_shade">
+                                    <code>XDO_OverrideSiteDemoController</code>
+                                </div>
+                            </div>
+                            <lightning-button 
+                                label="Mark Complete" 
+                                onclick={handleComplete}
+                                data-step="step4"
+                                class="slds-m-left_medium"
+                                icon-position="right">
+                            </lightning-button>
+                        </div>
+                    </lightning-accordion-section>
+                </lightning-accordion>
+
+                <!-- Completion Message -->
+                <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_info slds-m-top_medium" role="alert">
+                    <div class="slds-grid slds-grid_vertical-align-center">
+                        <div class="slds-col slds-m-right_small">
+                            <lightning-icon icon-name="utility:info" size="small"></lightning-icon>
+                        </div>
+                        <div class="slds-col">
+                            <h2>Once these steps are complete, you'll be ready to showcase your org with <strong>DemoTiger</strong>'s streamlined, on-brand experience.</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

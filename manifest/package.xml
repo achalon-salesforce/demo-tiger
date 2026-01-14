@@ -74,6 +74,10 @@
 		<name>ListView</name>
 	</types>
 	<types>
+		<members>xDO_DemoTiger_Admin</members>
+		<name>PermissionSet</name>
+	</types>
+	<types>
 		<members>xDO_DemoTiger</members>
 		<name>StaticResource</name>
 	</types>

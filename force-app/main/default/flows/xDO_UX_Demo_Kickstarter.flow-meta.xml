@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Generate_Demo_Configuration_Colors</name>
         <label>Generate Demo Configuration Colors</label>
-        <locationX>534</locationX>
-        <locationY>5018</locationY>
+        <locationX>402</locationX>
+        <locationY>2162</locationY>
         <actionName>xDO_Generate_Demo_Configuration_Colors</actionName>
         <actionType>generatePromptResponse</actionType>
         <connector>
@@ -30,12 +30,12 @@
     <actionCalls>
         <name>Parse_JSON_Data_to_Demo_Configuration</name>
         <label>Parse JSON Data to Demo Configuration</label>
-        <locationX>534</locationX>
-        <locationY>5126</locationY>
+        <locationX>402</locationX>
+        <locationY>2270</locationY>
         <actionName>XDO_GenericJSONParser</actionName>
         <actionType>apex</actionType>
         <connector>
-            <targetReference>Colors_Screen</targetReference>
+            <targetReference>If_Brand_Image</targetReference>
         </connector>
         <dataTypeMappings>
             <typeName>U__output</typeName>
@@ -66,8 +66,8 @@
     <assignments>
         <name>Set_Active_Custom_Demo_Stages</name>
         <label>Set Active Custom Demo Stages</label>
-        <locationX>688</locationX>
-        <locationY>1082</locationY>
+        <locationX>534</locationX>
+        <locationY>998</locationY>
         <assignmentItems>
             <assignToReference>$Flow.ActiveStages</assignToReference>
             <operator>Add</operator>
@@ -96,13 +96,20 @@
     <assignments>
         <name>Set_Active_New_Demo_Configuration_Stages</name>
         <label>Set Active New Demo Configuration Stages</label>
-        <locationX>369</locationX>
+        <locationX>611</locationX>
         <locationY>350</locationY>
         <assignmentItems>
             <assignToReference>$Flow.ActiveStages</assignToReference>
             <operator>Add</operator>
             <value>
                 <elementReference>Demo_Type_Stage</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Flow.ActiveStages</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Confirmation_Stage</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -113,7 +120,7 @@
         <name>Set_Active_Review_Stages</name>
         <label>Set Active Review Stages</label>
         <locationX>50</locationX>
-        <locationY>1082</locationY>
+        <locationY>998</locationY>
         <assignmentItems>
             <assignToReference>$Flow.ActiveStages</assignToReference>
             <operator>Add</operator>
@@ -135,7 +142,7 @@
     <assignments>
         <name>Set_Active_Set_Up_Stages</name>
         <label>Set Active Set Up Stages</label>
-        <locationX>1106</locationX>
+        <locationX>1194</locationX>
         <locationY>350</locationY>
         <assignmentItems>
             <assignToReference>$Flow.ActiveStages</assignToReference>
@@ -224,7 +231,7 @@
         <name>Set_Brand_Image</name>
         <label>Set Brand Image</label>
         <locationX>402</locationX>
-        <locationY>2354</locationY>
+        <locationY>2570</locationY>
         <assignmentItems>
             <assignToReference>varBrandImage</assignToReference>
             <operator>Assign</operator>
@@ -239,13 +246,20 @@
     <assignments>
         <name>Set_Company_Information</name>
         <label>Set Company Information</label>
-        <locationX>237</locationX>
+        <locationX>292</locationX>
         <locationY>674</locationY>
         <assignmentItems>
             <assignToReference>varCompanyName</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>Company_Name</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varDemoUserId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Demo_User.recordId</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -255,7 +269,7 @@
     <assignments>
         <name>Set_Default_Company_Information</name>
         <label>Set Default Company Information</label>
-        <locationX>1106</locationX>
+        <locationX>1194</locationX>
         <locationY>566</locationY>
         <assignmentItems>
             <assignToReference>varCompanyName</assignToReference>
@@ -271,9 +285,67 @@
                 <booleanValue>true</booleanValue>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varDemoUserId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Default_Demo_User.recordId</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <isGoTo>true</isGoTo>
             <targetReference>Images_Screen</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Default_Demo_Configuration</name>
+        <label>Set Default Demo Configuration</label>
+        <locationX>666</locationX>
+        <locationY>1322</locationY>
+        <assignmentItems>
+            <assignToReference>recDemoConfiguration.xDO_Accent_Color_1_HEX_Code__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>#5FA8FF</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recDemoConfiguration.xDO_Accent_Color_2_HEX_Code__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>#6B7CFF</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recDemoConfiguration.xDO_Accent_Color_3_HEX_Code__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>#2ED3C6</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recDemoConfiguration.xDO_Accent_Color_4_HEX_Code__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>#FFB703</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recDemoConfiguration.xDO_Primary_Color_HEX_Code__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>#066AFE</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recDemoConfiguration.xDO_Secondary_Color_HEX_Code__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>#0B1F3B</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>If_Brand_Image</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -400,6 +472,20 @@
                 <elementReference>default</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recDemoConfiguration.xDO_Demo_User__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>varDemoUserId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recDemoConfiguration.xDO_Demo_Build_Permission_Set__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formPermissionSetName</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>Create_Demo_Configuration</targetReference>
         </connector>
@@ -408,7 +494,7 @@
         <name>Set_Demo_Configuration_Active</name>
         <label>Set Demo Configuration Active</label>
         <locationX>50</locationX>
-        <locationY>1298</locationY>
+        <locationY>1214</locationY>
         <assignmentItems>
             <assignToReference>recDemoConfiguration.xDO_Active__c</assignToReference>
             <operator>Assign</operator>
@@ -424,7 +510,7 @@
         <name>Set_Group_Image</name>
         <label>Set Group Image</label>
         <locationX>402</locationX>
-        <locationY>3278</locationY>
+        <locationY>3494</locationY>
         <assignmentItems>
             <assignToReference>varGroupImage</assignToReference>
             <operator>Assign</operator>
@@ -440,7 +526,7 @@
         <name>Set_Group_Image_Content_Asset</name>
         <label>Set Group Image Content Asset</label>
         <locationX>490</locationX>
-        <locationY>3494</locationY>
+        <locationY>3710</locationY>
         <assignmentItems>
             <assignToReference>recContentAsset3.ContentDocumentId</assignToReference>
             <operator>Assign</operator>
@@ -477,7 +563,7 @@
         <name>Set_Image_Content_Asset</name>
         <label>Set Image Content Asset</label>
         <locationX>490</locationX>
-        <locationY>2570</locationY>
+        <locationY>2786</locationY>
         <assignmentItems>
             <assignToReference>recContentAsset2.ContentDocumentId</assignToReference>
             <operator>Assign</operator>
@@ -513,8 +599,8 @@
     <assignments>
         <name>Set_Logo</name>
         <label>Set Logo</label>
-        <locationX>534</locationX>
-        <locationY>1406</locationY>
+        <locationX>402</locationX>
+        <locationY>1322</locationY>
         <assignmentItems>
             <assignToReference>varLogo</assignToReference>
             <operator>Assign</operator>
@@ -529,8 +615,8 @@
     <assignments>
         <name>Set_Logo_Content_Asset</name>
         <label>Set Logo Content Asset</label>
-        <locationX>622</locationX>
-        <locationY>1730</locationY>
+        <locationX>490</locationX>
+        <locationY>1646</locationY>
         <assignmentItems>
             <assignToReference>recContentAsset1.ContentDocumentId</assignToReference>
             <operator>Assign</operator>
@@ -567,7 +653,7 @@
         <name>Set_User_Image</name>
         <label>Set User Image</label>
         <locationX>402</locationX>
-        <locationY>4202</locationY>
+        <locationY>4418</locationY>
         <assignmentItems>
             <assignToReference>varUserImage</assignToReference>
             <operator>Assign</operator>
@@ -583,7 +669,7 @@
         <name>Set_User_Image_Content_Asset</name>
         <label>Set User Image Content Asset</label>
         <locationX>490</locationX>
-        <locationY>4418</locationY>
+        <locationY>4634</locationY>
         <assignmentItems>
             <assignToReference>recContentAsset4.ContentDocumentId</assignToReference>
             <operator>Assign</operator>
@@ -642,7 +728,7 @@
         <name>If_Brand_Image</name>
         <label>If Brand Image</label>
         <locationX>534</locationX>
-        <locationY>2246</locationY>
+        <locationY>2462</locationY>
         <defaultConnector>
             <targetReference>If_Group_Image</targetReference>
         </defaultConnector>
@@ -666,7 +752,7 @@
     <decisions>
         <name>If_Default_Demo_Configuration</name>
         <label>If Default Demo Configuration</label>
-        <locationX>737</locationX>
+        <locationX>902</locationX>
         <locationY>242</locationY>
         <defaultConnector>
             <targetReference>Set_Active_Set_Up_Stages</targetReference>
@@ -691,8 +777,8 @@
     <decisions>
         <name>If_Demo_Configuration</name>
         <label>If Demo Configuration</label>
-        <locationX>369</locationX>
-        <locationY>974</locationY>
+        <locationX>292</locationX>
+        <locationY>890</locationY>
         <defaultConnector>
             <targetReference>Set_Active_Custom_Demo_Stages</targetReference>
         </defaultConnector>
@@ -716,10 +802,10 @@
     <decisions>
         <name>If_Demo_Type</name>
         <label>If Demo Type</label>
-        <locationX>369</locationX>
+        <locationX>611</locationX>
         <locationY>566</locationY>
         <defaultConnector>
-            <targetReference>Get_Demo_Configuration</targetReference>
+            <targetReference>Activate_Default_Demo</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Demo</defaultConnectorLabel>
         <rules>
@@ -742,7 +828,7 @@
         <name>If_Group_Image</name>
         <label>If Group Image</label>
         <locationX>534</locationX>
-        <locationY>3170</locationY>
+        <locationY>3386</locationY>
         <defaultConnector>
             <targetReference>If_User_Image</targetReference>
         </defaultConnector>
@@ -766,10 +852,10 @@
     <decisions>
         <name>If_Logo</name>
         <label>If Logo</label>
-        <locationX>688</locationX>
-        <locationY>1298</locationY>
+        <locationX>534</locationX>
+        <locationY>1214</locationY>
         <defaultConnector>
-            <targetReference>Logo_Error_Screen</targetReference>
+            <targetReference>Set_Default_Demo_Configuration</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -792,9 +878,9 @@
         <name>If_User_Image</name>
         <label>If User Image</label>
         <locationX>534</locationX>
-        <locationY>4094</locationY>
+        <locationY>4310</locationY>
         <defaultConnector>
-            <targetReference>Generate_Demo_Configuration_Colors</targetReference>
+            <targetReference>Colors_Screen</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -864,6 +950,16 @@ Updates:
         <expression>IF({!varLogo},&quot;/file-asset/&quot; + {!formLogoAssetName} + &quot;?v=1&quot;,null)</expression>
     </formulas>
     <formulas>
+        <name>formPermissionSetName</name>
+        <dataType>String</dataType>
+        <expression>SUBSTITUTE({!varCompanyName}, &quot; &quot;, &quot;_&quot;) + &quot;_Demo_Access&quot;</expression>
+    </formulas>
+    <formulas>
+        <name>formUniqueName</name>
+        <dataType>String</dataType>
+        <expression>SUBSTITUTE({!varCompanyName}, &quot; &quot;, &quot;_&quot;)</expression>
+    </formulas>
+    <formulas>
         <name>formUserImageAssetLabel</name>
         <dataType>String</dataType>
         <expression>{!varCompanyName} + &quot; User Image&quot;</expression>
@@ -884,7 +980,7 @@ Updates:
         <name>For_Each_Group_Image_Content_Document_Id</name>
         <label>For Each Group Image Content Document Id</label>
         <locationX>402</locationX>
-        <locationY>3386</locationY>
+        <locationY>3602</locationY>
         <collectionReference>Group_Image_Upload.contentDocIds</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -898,7 +994,7 @@ Updates:
         <name>For_Each_Image_Content_Document_Id</name>
         <label>For Each Image Content Document Id</label>
         <locationX>402</locationX>
-        <locationY>2462</locationY>
+        <locationY>2678</locationY>
         <collectionReference>Brand_Image_Upload.contentDocIds</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -911,8 +1007,8 @@ Updates:
     <loops>
         <name>For_Each_Logo_Content_Document_Id</name>
         <label>For Each Logo Content Document Id</label>
-        <locationX>534</locationX>
-        <locationY>1622</locationY>
+        <locationX>402</locationX>
+        <locationY>1538</locationY>
         <collectionReference>Logo_Upload.contentDocIds</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -926,7 +1022,7 @@ Updates:
         <name>For_Each_User_Image_Content_Document_Id</name>
         <label>For Each User Image Content Document Id</label>
         <locationX>402</locationX>
-        <locationY>4310</locationY>
+        <locationY>4526</locationY>
         <collectionReference>User_Image_Upload.contentDocIds</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -958,8 +1054,8 @@ Updates:
     <recordCreates>
         <name>Create_Demo_Configuration</name>
         <label>Create Demo Configuration</label>
-        <locationX>369</locationX>
-        <locationY>5726</locationY>
+        <locationX>292</locationX>
+        <locationY>5642</locationY>
         <connector>
             <targetReference>Confirmation_Screen</targetReference>
         </connector>
@@ -970,7 +1066,7 @@ Updates:
         <name>Create_Group_Image_Asset_File</name>
         <label>Create Group Image Asset File</label>
         <locationX>402</locationX>
-        <locationY>3686</locationY>
+        <locationY>3902</locationY>
         <connector>
             <targetReference>Get_Group_Image_Asset_File</targetReference>
         </connector>
@@ -980,7 +1076,7 @@ Updates:
         <name>Create_Image_Asset_File</name>
         <label>Create Image Asset File</label>
         <locationX>402</locationX>
-        <locationY>2762</locationY>
+        <locationY>2978</locationY>
         <connector>
             <targetReference>Get_Image_Asset_File</targetReference>
         </connector>
@@ -989,8 +1085,8 @@ Updates:
     <recordCreates>
         <name>Create_Logo_Asset_File</name>
         <label>Create Logo Asset File</label>
-        <locationX>534</locationX>
-        <locationY>1922</locationY>
+        <locationX>402</locationX>
+        <locationY>1838</locationY>
         <connector>
             <targetReference>Get_Logo_Asset_File</targetReference>
         </connector>
@@ -1000,7 +1096,7 @@ Updates:
         <name>Create_User_Image_Asset_File</name>
         <label>Create User Image Asset File</label>
         <locationX>402</locationX>
-        <locationY>4610</locationY>
+        <locationY>4826</locationY>
         <connector>
             <targetReference>Get_User_Image_Asset_File</targetReference>
         </connector>
@@ -1009,7 +1105,7 @@ Updates:
     <recordLookups>
         <name>Get_Default_Demo_Configuration</name>
         <label>Get Default Demo Configuration</label>
-        <locationX>737</locationX>
+        <locationX>902</locationX>
         <locationY>134</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1030,18 +1126,18 @@ Updates:
     <recordLookups>
         <name>Get_Demo_Configuration</name>
         <label>Get Demo Configuration</label>
-        <locationX>369</locationX>
-        <locationY>866</locationY>
+        <locationX>292</locationX>
+        <locationY>782</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>If_Demo_Configuration</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
-            <field>Name</field>
+            <field>xDO_Unique_Name__c</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>varCompanyName</elementReference>
+                <elementReference>formUniqueName</elementReference>
             </value>
         </filters>
         <object>xDO_Demo_Configuration__c</object>
@@ -1062,7 +1158,7 @@ Updates:
         <name>Get_Group_Image_Asset_File</name>
         <label>Get Group Image Asset File</label>
         <locationX>402</locationX>
-        <locationY>3794</locationY>
+        <locationY>4010</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Update_Group_Image_Content_Document</targetReference>
@@ -1083,7 +1179,7 @@ Updates:
         <name>Get_Image_Asset_File</name>
         <label>Get Image Asset File</label>
         <locationX>402</locationX>
-        <locationY>2870</locationY>
+        <locationY>3086</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Update_Image_Content_Document</targetReference>
@@ -1103,8 +1199,8 @@ Updates:
     <recordLookups>
         <name>Get_Logo_Asset_File</name>
         <label>Get Logo Asset File</label>
-        <locationX>534</locationX>
-        <locationY>2030</locationY>
+        <locationX>402</locationX>
+        <locationY>1946</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Update_Logo_Content_Document</targetReference>
@@ -1124,8 +1220,8 @@ Updates:
     <recordLookups>
         <name>Get_Logo_Content_Document</name>
         <label>Get Logo Content Document</label>
-        <locationX>534</locationX>
-        <locationY>1514</locationY>
+        <locationX>402</locationX>
+        <locationY>1430</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>For_Each_Logo_Content_Document_Id</targetReference>
@@ -1146,7 +1242,7 @@ Updates:
         <name>Get_User_Image_Asset_File</name>
         <label>Get User Image Asset File</label>
         <locationX>402</locationX>
-        <locationY>4718</locationY>
+        <locationY>4934</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Update_User_Image_Content_Document</targetReference>
@@ -1164,10 +1260,34 @@ Updates:
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
+        <name>Activate_Default_Demo</name>
+        <label>Activate Default Demo</label>
+        <locationX>930</locationX>
+        <locationY>674</locationY>
+        <connector>
+            <targetReference>Default_Demo_Activated_Screen</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Default_Demo_Configuration.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>xDO_Active__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>xDO_Demo_Configuration__c</object>
+    </recordUpdates>
+    <recordUpdates>
         <name>Update_Group_Image_Content_Document</name>
         <label>Update Group Image Content Document</label>
         <locationX>402</locationX>
-        <locationY>3902</locationY>
+        <locationY>4118</locationY>
         <connector>
             <targetReference>If_User_Image</targetReference>
         </connector>
@@ -1191,7 +1311,7 @@ Updates:
         <name>Update_Image_Content_Document</name>
         <label>Update Image Content Document</label>
         <locationX>402</locationX>
-        <locationY>2978</locationY>
+        <locationY>3194</locationY>
         <connector>
             <targetReference>If_Group_Image</targetReference>
         </connector>
@@ -1214,10 +1334,10 @@ Updates:
     <recordUpdates>
         <name>Update_Logo_Content_Document</name>
         <label>Update Logo Content Document</label>
-        <locationX>534</locationX>
-        <locationY>2138</locationY>
+        <locationX>402</locationX>
+        <locationY>2054</locationY>
         <connector>
-            <targetReference>If_Brand_Image</targetReference>
+            <targetReference>Generate_Demo_Configuration_Colors</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -1239,9 +1359,9 @@ Updates:
         <name>Update_User_Image_Content_Document</name>
         <label>Update User Image Content Document</label>
         <locationX>402</locationX>
-        <locationY>4826</locationY>
+        <locationY>5042</locationY>
         <connector>
-            <targetReference>Generate_Demo_Configuration_Colors</targetReference>
+            <targetReference>Colors_Screen</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -1272,7 +1392,7 @@ Updates:
         </connector>
         <fields>
             <name>Color_Title</name>
-            <fieldText>&lt;p&gt;&lt;strong style=&quot;font-size: 16px;&quot;&gt;Demo Kickstarter | Brand Colors&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;h2&gt;Demo Kickstarter | Brand Colors&lt;/h2&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -1497,14 +1617,14 @@ Updates:
     <screens>
         <name>Confirmation_Screen</name>
         <label>Confirmation Screen</label>
-        <locationX>369</locationX>
-        <locationY>5834</locationY>
+        <locationX>292</locationX>
+        <locationY>5750</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <fields>
             <name>Confirmation_Title</name>
-            <fieldText>&lt;p&gt;&lt;strong style=&quot;font-size: 16px;&quot;&gt;Your Demo Has Been Kickstarted!&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;h2&gt;Your Demo Has Been Kickstarted!&lt;/h2&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -1560,9 +1680,49 @@ Updates:
         </stageReference>
     </screens>
     <screens>
+        <name>Default_Demo_Activated_Screen</name>
+        <label>Default Demo Activated Screen</label>
+        <locationX>930</locationX>
+        <locationY>782</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Default_Activated_Title</name>
+            <fieldText>&lt;h2&gt;Default Demo Activated&lt;/h2&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>Default_Activated_Text</name>
+            <fieldText>&lt;p&gt;Your default demo configuration &lt;strong&gt;{!Get_Default_Demo_Configuration.Name}&lt;/strong&gt; has been activated. The org branding will be updated shortly.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+        <stageReference>
+            <elementReference>Confirmation_Stage</elementReference>
+        </stageReference>
+    </screens>
+    <screens>
         <name>Demo_Type_Screen</name>
         <label>Demo Type Screen</label>
-        <locationX>369</locationX>
+        <locationX>611</locationX>
         <locationY>458</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -1572,7 +1732,7 @@ Updates:
         </connector>
         <fields>
             <name>Demo_Type_Title</name>
-            <fieldText>&lt;p&gt;&lt;strong style=&quot;font-size: 16px;&quot;&gt;Demo Kickstarter&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;h2&gt;Demo Kickstarter&lt;/h2&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -1648,6 +1808,46 @@ Updates:
                         </width>
                     </styleProperties>
                 </fields>
+                <fields>
+                    <name>Demo_User</name>
+                    <extensionName>flowruntime:lookup</extensionName>
+                    <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>fieldApiName</name>
+                        <value>
+                            <stringValue>xDO_Demo_User__c</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>label</name>
+                        <value>
+                            <stringValue>Demo User</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>objectApiName</name>
+                        <value>
+                            <stringValue>xDO_Demo_Configuration__c</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>required</name>
+                        <value>
+                            <booleanValue>false</booleanValue>
+                        </value>
+                    </inputParameters>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <storeOutputAutomatically>true</storeOutputAutomatically>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
+                </fields>
                 <inputParameters>
                     <name>width</name>
                     <value>
@@ -1687,7 +1887,7 @@ Updates:
         <name>Existing_Branding_Screen</name>
         <label>Existing Branding Screen</label>
         <locationX>50</locationX>
-        <locationY>1190</locationY>
+        <locationY>1106</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -1696,7 +1896,7 @@ Updates:
         </connector>
         <fields>
             <name>Existing_Branding_Title</name>
-            <fieldText>&lt;p&gt;&lt;strong style=&quot;font-size: 16px;&quot;&gt;Demo Kickstarter | Branding&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;h2&gt;Demo Kickstarter | Branding&lt;/h2&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -2172,8 +2372,8 @@ Updates:
     <screens>
         <name>Images_Screen</name>
         <label>Images Screen</label>
-        <locationX>688</locationX>
-        <locationY>1190</locationY>
+        <locationX>534</locationX>
+        <locationY>1106</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -2182,7 +2382,7 @@ Updates:
         </connector>
         <fields>
             <name>Branding_Title</name>
-            <fieldText>&lt;p&gt;&lt;strong style=&quot;font-size: 16px;&quot;&gt;Demo Kickstarter | Branding&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;h2&gt;Demo Kickstarter | Branding&lt;/h2&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -2206,7 +2406,7 @@ Updates:
                     <inputParameters>
                         <name>label</name>
                         <value>
-                            <stringValue>Logo</stringValue>
+                            <stringValue>Logo (Optional)</stringValue>
                         </value>
                     </inputParameters>
                     <inputParameters>
@@ -2263,7 +2463,7 @@ Updates:
                     <inputParameters>
                         <name>label</name>
                         <value>
-                            <stringValue>Brand Image</stringValue>
+                            <stringValue>Brand Image (Optional)</stringValue>
                         </value>
                     </inputParameters>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
@@ -2308,7 +2508,7 @@ Updates:
                     <inputParameters>
                         <name>label</name>
                         <value>
-                            <stringValue>Group Image</stringValue>
+                            <stringValue>Group Image (Optional)</stringValue>
                         </value>
                     </inputParameters>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
@@ -2353,7 +2553,7 @@ Updates:
                     <inputParameters>
                         <name>label</name>
                         <value>
-                            <stringValue>User Image</stringValue>
+                            <stringValue>User Image (Optional)</stringValue>
                         </value>
                     </inputParameters>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
@@ -2418,63 +2618,9 @@ Updates:
         </stageReference>
     </screens>
     <screens>
-        <name>Logo_Error_Screen</name>
-        <label>Logo Error Screen</label>
-        <locationX>842</locationX>
-        <locationY>1406</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <connector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Images_Screen</targetReference>
-        </connector>
-        <fields>
-            <name>Logo_Error_Screen_Section1</name>
-            <fieldType>RegionContainer</fieldType>
-            <fields>
-                <name>Logo_Error_Screen_Section1_Column1</name>
-                <fieldType>Region</fieldType>
-                <fields>
-                    <name>Logo_Error_Text</name>
-                    <fieldText>&lt;p&gt;Please upload a logo.&lt;/p&gt;</fieldText>
-                    <fieldType>DisplayText</fieldType>
-                    <styleProperties>
-                        <verticalAlignment>
-                            <stringValue>top</stringValue>
-                        </verticalAlignment>
-                        <width>
-                            <stringValue>12</stringValue>
-                        </width>
-                    </styleProperties>
-                </fields>
-                <inputParameters>
-                    <name>width</name>
-                    <value>
-                        <stringValue>12</stringValue>
-                    </value>
-                </inputParameters>
-                <isRequired>false</isRequired>
-            </fields>
-            <isRequired>false</isRequired>
-            <regionContainerType>SectionWithoutHeader</regionContainerType>
-            <styleProperties>
-                <verticalAlignment>
-                    <stringValue>top</stringValue>
-                </verticalAlignment>
-                <width>
-                    <stringValue>12</stringValue>
-                </width>
-            </styleProperties>
-        </fields>
-        <nextOrFinishButtonLabel>Retry</nextOrFinishButtonLabel>
-        <showFooter>true</showFooter>
-        <showHeader>false</showHeader>
-    </screens>
-    <screens>
         <name>Set_Up_Screen</name>
         <label>Set Up Screen</label>
-        <locationX>1106</locationX>
+        <locationX>1194</locationX>
         <locationY>458</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -2490,7 +2636,7 @@ Updates:
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>Set_Up_Screen_Text</name>
-                    <fieldText>&lt;p&gt;&lt;strong style=&quot;font-size: 18px;&quot;&gt;Welcome to DemoTiger Setup&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Before you can start using DemoTiger, a few quick setup steps are required to make sure everything looks and functions the way it should. Please review the &lt;a href=&quot;/lightning/n/DemoTiger_Setup&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;DemoTiger Setup&lt;/a&gt; steps.&lt;/p&gt;</fieldText>
+                    <fieldText>&lt;h2&gt;Welcome to DemoTiger Setup&lt;/h2&gt;&lt;p&gt;Before you can start using DemoTiger, a few quick setup steps are required to make sure everything looks and functions the way it should. Please review the &lt;a href=&quot;/lightning/n/DemoTiger_Setup&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;DemoTiger Setup&lt;/a&gt; steps.&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                     <styleProperties>
                         <verticalAlignment>
@@ -2508,6 +2654,46 @@ Updates:
                     <fieldType>InputField</fieldType>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
+                </fields>
+                <fields>
+                    <name>Default_Demo_User</name>
+                    <extensionName>flowruntime:lookup</extensionName>
+                    <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>fieldApiName</name>
+                        <value>
+                            <stringValue>xDO_Demo_User__c</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>label</name>
+                        <value>
+                            <stringValue>Default Demo User</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>objectApiName</name>
+                        <value>
+                            <stringValue>xDO_Demo_Configuration__c</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>required</name>
+                        <value>
+                            <booleanValue>false</booleanValue>
+                        </value>
+                    </inputParameters>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <storeOutputAutomatically>true</storeOutputAutomatically>
                     <styleProperties>
                         <verticalAlignment>
                             <stringValue>top</stringValue>
@@ -2579,7 +2765,7 @@ Updates:
         <stageOrder>1</stageOrder>
     </stages>
     <start>
-        <locationX>611</locationX>
+        <locationX>776</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_Default_Demo_Configuration</targetReference>
@@ -2738,6 +2924,13 @@ Updates:
         <value>
             <stringValue>Connected University</stringValue>
         </value>
+    </variables>
+    <variables>
+        <name>varDemoUserId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
     </variables>
     <variables>
         <name>varGroupImage</name>

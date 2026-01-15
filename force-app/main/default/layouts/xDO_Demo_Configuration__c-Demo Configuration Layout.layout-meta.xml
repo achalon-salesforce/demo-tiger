@@ -12,6 +12,10 @@
                 <field>Name</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>xDO_Unique_Name__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>xDO_Default_Demo_Configuration__c</field>
             </layoutItems>
@@ -20,6 +24,14 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>OwnerId</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>xDO_Demo_User__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>xDO_Demo_Build_Permission_Set__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>

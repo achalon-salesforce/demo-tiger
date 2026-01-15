@@ -46,6 +46,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>xDO_Demo_Configuration__c.xDO_Demo_Build_Permission_Set__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>xDO_Demo_Configuration__c.xDO_Demo_User__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>xDO_Demo_Configuration__c.xDO_Group_Image_URL__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -77,6 +87,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>xDO_Demo_Configuration__c.xDO_Secondary_Color_HEX_Code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>xDO_Demo_Configuration__c.xDO_Unique_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

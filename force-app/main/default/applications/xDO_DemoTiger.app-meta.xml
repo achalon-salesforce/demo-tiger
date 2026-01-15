@@ -12,7 +12,7 @@
         <headerColor>#F56600</headerColor>
         <logo>Demo_Tiger_Flyer_NBG</logo>
         <logoVersion>1</logoVersion>
-        <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
     </brand>
     <description>Manage your demo org and the DemoTiger tools from this centralized hub.</description>
     <formFactors>Small</formFactors>

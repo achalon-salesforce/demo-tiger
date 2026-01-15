@@ -2,7 +2,7 @@
 <BrandingSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <brandingSetProperty>
         <propertyName>BRAND_COLOR</propertyName>
-        <propertyValue>#00A1E0</propertyValue>
+        <propertyValue>#FF8C00</propertyValue>
     </brandingSetProperty>
     <brandingSetProperty>
         <propertyName>HEADER_BACKGROUND_COLOR</propertyName>
@@ -10,7 +10,7 @@
     </brandingSetProperty>
     <brandingSetProperty>
         <propertyName>BRAND_IMAGE</propertyName>
-        <propertyValue></propertyValue>
+        <propertyValue>/file-asset/DemoTiger_Logo?v=1</propertyValue>
     </brandingSetProperty>
     <brandingSetProperty>
         <propertyName>BANNER_IMAGE</propertyName>

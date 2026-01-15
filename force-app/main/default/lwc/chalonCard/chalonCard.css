@@ -1,0 +1,9 @@
+.slds-button_brand lightning-icon {
+    --slds-c-icon-color-foreground-default: white;
+    --slds-c-icon-color-foreground: white;
+    color: white;
+}
+
+.slds-button_brand lightning-icon svg {
+    fill: white;
+}

@@ -1,0 +1,7 @@
+# Demo Package Directory
+
+This directory contains customer-specific package.xml files for demo builds.
+
+Each demo package follows the naming convention: {PREFIX}_package.xml
+
+Example: ACM_package.xml for "Acme Corporation"

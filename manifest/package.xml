@@ -46,6 +46,8 @@
 		<members>xDO_Demo_Configuration_After_Create_or_Update_Set_Inactive</members>
 		<members>xDO_Demo_Configuration_After_Delete</members>
 		<members>xDO_Demo_Configuration_Before_Create_or_Update</members>
+		<members>xDO_Demo_Helper_Assign_Demo_Access</members>
+		<members>xDO_Demo_Helper_Update_Demo_User</members>
 		<members>xDO_Demo_Helper_Update_Lightning_Experience_Branding</members>
 		<members>xDO_Demo_Helper_Update_Organization_Information</members>
 		<members>xDO_UX_Demo_Kickstarter</members>
@@ -61,6 +63,7 @@
 		<name>Layout</name>
 	</types>
 	<types>
+		<members>chalonCard</members>
 		<members>flowColorPicker</members>
 		<members>xdoSetUpDemoTiger</members>
 		<name>LightningComponentBundle</name>
@@ -72,6 +75,10 @@
 	<types>
 		<members>xDO_Demo_Configuration__c.All</members>
 		<name>ListView</name>
+	</types>
+	<types>
+		<members>xDO_DemoTiger_Admin</members>
+		<name>PermissionSet</name>
 	</types>
 	<types>
 		<members>xDO_DemoTiger</members>
